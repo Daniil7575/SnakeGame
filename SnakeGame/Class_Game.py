@@ -13,12 +13,6 @@ class Game:
         self.col = [pygame.Color(0, 0, 0), pygame.Color(255, 0, 0), pygame.Color(0, 255, 0), pygame.Color(0, 0, 255)]
         self.paused = False
 
-    def init_and_check_for_errors(self):
-        check_errors = pygame.init()
-        if check_errors[1] > 0:
-            sys.exit()
-        else:
-            print('Ok')
 
     def pause(self):
         self.paused = not self.paused
@@ -48,7 +42,7 @@ class Game:
 
     def screen_refresh(self):
         pygame.display.flip()
-        self.fps.tick(30)
+        self.fps.tick(20)
 
     def score(self):
         font = pygame.font.SysFont('monaco', 24)

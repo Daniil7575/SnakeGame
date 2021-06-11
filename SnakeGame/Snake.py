@@ -31,7 +31,7 @@ class Snake():
 
     def snake_body_mech(self, score, food_position, screen_width, screen_height):
         self.snake_body.insert(0, list(self.snake_head))
-        if (self.snake_head[0] == food_position[0] and self.snake_head[1] == food_position[1]):
+        if self.snake_head[0] == food_position[0] and self.snake_head[1] == food_position[1]:
             food_position = [random.randrange(1, screen_width / 10) * 10, random.randrange(1, screen_height / 10) * 10]
             score += 1
         else:
@@ -48,5 +48,5 @@ class Snake():
                 self.snake_head[1] > screen_height - 10 or self.snake_head[1] < 0)):
             game_over()
         for block in self.snake_body[1:]:
-            if (block[0] == self.snake_head[0] and block[1] == self.snake_head[1]):
+            if block[0] == self.snake_head[0] and block[1] == self.snake_head[1]:
                 game_over()
