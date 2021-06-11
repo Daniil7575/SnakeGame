@@ -1,6 +1,8 @@
 import random
 import pygame
 
+
+
 class Snake():
     def __init__(self, color):
         self.snake_head = [100, 50]  # позиция головы змеи
@@ -23,14 +25,14 @@ class Snake():
         if self.direction == "LEFT":
             self.snake_head[0] -= 10
         if self.direction == "UP":
-            self.snake_head[1] += 10
-        if self.direction == "DOWN":
             self.snake_head[1] -= 10
+        if self.direction == "DOWN":
+            self.snake_head[1] += 10
 
-    def snake_body(self, score, food_position, screen_width, screen_height):
+    def snake_body_mech(self, score, food_position, screen_width, screen_height):
         self.snake_body.insert(0, list(self.snake_head))
         if (self.snake_head[0] == food_position[0] and self.snake_head[1] == food_position[1]):
-            food_position = [random.randrange(1, screen_width/10)*10, random.randrange(1, screen_height/10)*10]
+            food_position = [random.randrange(1, screen_width / 10) * 10, random.randrange(1, screen_height / 10) * 10]
             score += 1
         else:
             self.snake_body.pop()
@@ -42,9 +44,9 @@ class Snake():
             pygame.draw.rect(play_surface, self.snake_color, pygame.Rect(positions[0], positions[1], 10, 10))
 
     def boundary_check(self, game_over, screen_width, screen_height):
-        if any((self.snake_head[0] > screen_width-10 or self.snake_head[0] < 0,
-                self.snake_head[1] > screen_height-10 or self.snake_head[1] < 0)):
+        if any((self.snake_head[0] > screen_width - 10 or self.snake_head[0] < 0,
+                self.snake_head[1] > screen_height - 10 or self.snake_head[1] < 0)):
             game_over()
-        for block in self.snake_body[1]:
+        for block in self.snake_body[1:]:
             if (block[0] == self.snake_head[0] and block[1] == self.snake_head[1]):
                 game_over()
