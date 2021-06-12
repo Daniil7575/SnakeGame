@@ -17,16 +17,16 @@ def start():
     food = Food(game.random_color(), game.width, game.height)
 
     game.draw_bg()
-
     while True:
         while game.paused:
+            # <Саша
             pause_font = pygame.font.SysFont("comicsansms", 115)
             pause_surf = pause_font.render("Paused", True, game.colours["Grey"])
             pause_rect = pause_surf.get_rect()
             pause_rect.center = ((game.width / 2), (game.height / 2))
             game.bg.blit(pause_surf, pause_rect)
-
             pygame.display.update()
+            # Саша/>
             for is_pause in pygame.event.get():
                 if is_pause.type == pygame.KEYDOWN:
                     if is_pause.key == pygame.K_SPACE:
@@ -41,18 +41,18 @@ def start():
 
         food.show_food(game.bg)
         snake.boundary_check(game.game_over, game.width, game.height)
-
+        # <Саша
         if game.total_score % 5 == 0 and game.total_score != 0:
             super.super_position(game.bg)
             game.total_score, super.supfood_position = snake.super_snake_mech(game.total_score, super.supfood_position,
                                                                               game.width, game.height)
-
-        game.score()
+        # Саша/>
+        game.score(55, 5, 25)
         game.screen_refresh()
         if game.is_over:
             break
 
-
+# <Саша
 def main_menu():
     game.draw_bg()
     run = True
@@ -78,4 +78,4 @@ def main_menu():
 
 
 main_menu()
-
+# Саша/>
