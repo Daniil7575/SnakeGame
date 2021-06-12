@@ -14,6 +14,7 @@ class Game:
                         "Grey": pygame.Color(100, 100, 100)}
         self.paused = False
         self.is_over = False
+        self.level = 0
 
     @staticmethod
     def random_color():
@@ -50,7 +51,7 @@ class Game:
 
     def screen_refresh(self):
         pygame.display.flip()
-        self.fps.tick(20)
+        self.fps.tick(20 + int(bool(self.total_score)) * 2)
 
     def score(self):
         font = pygame.font.SysFont("times new roman", 24)
@@ -61,6 +62,7 @@ class Game:
 
     def game_over(self):
         self.bg.fill((0, 0, 0))
+
         re_font = pygame.font.SysFont("arial", 40)
         re_surf = re_font.render("Press R to restart or Q to quit", True, self.colours["Red"])
         re_rect = re_surf.get_rect()
@@ -72,10 +74,14 @@ class Game:
         go_rect = go_surf.get_rect()
         go_rect.midtop = (400, 15)
         self.bg.blit(go_surf, go_rect)
+
         pygame.display.flip()
         self.is_over = True
         while True:
             for end_event in pygame.event.get():
                 if end_event.type == pygame.KEYDOWN:
+                    screen_surf = pygame.display.get_surface()
+                    screen_surf.fill(self.colours["Black"])  # erases the entire screen surface
+                    # screen_surf.blit(screen_surf, (0, 0))
                     return
 

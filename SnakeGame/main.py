@@ -57,6 +57,7 @@ def main_menu():
     game.draw_bg()
     run = True
     while run:
+        game.bg.fill((0, 0, 0))
         start_font = pygame.font.SysFont("arial", 60)
         start_surf = start_font.render("Press F to begin", True, game.colours["Green"])
         start_rect = start_surf.get_rect()
