@@ -15,9 +15,16 @@ def start():
 
     while True:
         while game.paused:
+            pause_font = pygame.font.SysFont("comicsansms", 115)
+            pause_surf = pause_font.render("Paused", True, game.colours["Grey"])
+            pause_rect = pause_surf.get_rect()
+            pause_rect.center = ((game.width / 2), (game.height / 2))
+            game.bg.blit(pause_surf, pause_rect)
+
+            pygame.display.update()
             for is_pause in pygame.event.get():
                 if is_pause.type == pygame.KEYDOWN:
-                    if is_pause.key == pygame.K_p:
+                    if is_pause.key == pygame.K_SPACE:
                         game.pause()
 
         snake.change_direction = game.click_listener(snake.change_direction)

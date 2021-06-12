@@ -10,7 +10,8 @@ class Game:
         self.fps = pygame.time.Clock()
         self.colours = {"Black": pygame.Color(0, 0, 0), "White": pygame.Color(255, 255, 255),
                         "Red": pygame.Color(255, 0, 0), "Green": pygame.Color(0, 255, 0),
-                        "Blue": pygame.Color(0, 0, 255), "Yellow": pygame.Color(255, 255, 0)}
+                        "Blue": pygame.Color(0, 0, 255), "Yellow": pygame.Color(255, 255, 0),
+                        "Grey": pygame.Color(100, 100, 100)}
         self.paused = False
         self.is_over = False
 
@@ -39,7 +40,7 @@ class Game:
                 elif event.key == pygame.K_d:
                     direction = "RIGHT"
 
-                elif event.key == pygame.K_p:
+                elif event.key == pygame.K_SPACE:
                     self.pause()
 
                 elif event.key == pygame.K_q:
@@ -59,8 +60,9 @@ class Game:
         self.bg.blit(surf, s_rect)
 
     def game_over(self):
+        self.bg.fill((0, 0, 0))
         re_font = pygame.font.SysFont("arial", 40)
-        re_surf = re_font.render("Press r/q to restart/quit", True, self.colours["Red"])
+        re_surf = re_font.render("Press R to restart or Q to quit", True, self.colours["Red"])
         re_rect = re_surf.get_rect()
         re_rect.midtop = (400, 100)
         self.bg.blit(re_surf, re_rect)
