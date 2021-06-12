@@ -3,12 +3,14 @@ import sys
 from Class_Game import Game
 from Snake import Snake
 from Food import Food
+from SuperFood import SuperFood
 
 pygame.font.init()
 game = Game()
 
 
 def start():
+    super = SuperFood(game.colours["Green"], game.width, game.height)
     game.total_score = 0
     game.is_over = False
     snake = Snake(game.random_color())
@@ -39,6 +41,11 @@ def start():
 
         food.show_food(game.bg)
         snake.boundary_check(game.game_over, game.width, game.height)
+
+        if game.total_score % 5 == 0 and game.total_score != 0:
+            super.super_position(game.bg)
+            game.total_score, super.supfood_position = snake.super_snake_mech(game.total_score, super.supfood_position,
+                                                                              game.width, game.height)
 
         game.score()
         game.screen_refresh()
