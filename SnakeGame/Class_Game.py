@@ -59,7 +59,7 @@ class Game:
     def game_over(self):
         self.bg.fill((0, 0, 0))
         re_font = pygame.font.SysFont("arial", 40)
-        re_surf = re_font.render("Press R to restart or Q to quit", True, self.colours["Red"])
+        re_surf = re_font.render("Press R to restart or Q to quit into main menu", True, self.colours["Red"])
         re_rect = re_surf.get_rect()
         re_rect.midtop = (400, 100)
         self.bg.blit(re_surf, re_rect)

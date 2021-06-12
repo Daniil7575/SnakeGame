@@ -61,7 +61,7 @@ def main_menu():
     while run:
         game.bg.fill((0, 0, 0))
         start_font = pygame.font.SysFont("arial", 60)
-        start_surf = start_font.render("Press F to begin", True, game.colours["Green"])
+        start_surf = start_font.render("Press F to begin or Q to quit", True, game.colours["Green"])
         start_rect = start_surf.get_rect()
         start_rect.center = ((game.width / 2), (game.height / 2))
         game.bg.blit(start_surf, start_rect)
