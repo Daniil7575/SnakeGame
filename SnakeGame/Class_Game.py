@@ -74,4 +74,8 @@ class Game:
         self.bg.blit(go_surf, go_rect)
         pygame.display.flip()
         self.is_over = True
-        # time.sleep(3)
+        while True:
+            for end_event in pygame.event.get():
+                if end_event.type == pygame.KEYDOWN:
+                    return
+

@@ -4,10 +4,13 @@ from Class_Game import Game
 from Snake import Snake
 from Food import Food
 
+pygame.font.init()
+game = Game()
+
 
 def start():
-    pygame.font.init()
-    game = Game()
+    game.total_score = 0
+    game.is_over = False
     snake = Snake(game.random_color())
     food = Food(game.random_color(), game.width, game.height)
 
@@ -43,14 +46,28 @@ def start():
             break
 
 
-start()
-while True:
-    for event in pygame.event.get():
-        print(event)
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_r:
-                start()
+def main_menu():
+    game.draw_bg()
+    run = True
+    while run:
+        start_font = pygame.font.SysFont("arial", 60)
+        start_surf = start_font.render("Press F to begin", True, game.colours["Green"])
+        start_rect = start_surf.get_rect()
+        start_rect.center = ((game.width / 2), (game.height / 2))
+        game.bg.blit(start_surf, start_rect)
 
-            elif event.key == pygame.K_q:
-                pygame.quit()
-                sys.exit()
+        pygame.display.update()
+
+        for event_run in pygame.event.get():
+            if event_run.type == pygame.KEYDOWN:
+                if event_run.key == pygame.K_f:
+                    start()
+                elif event_run.key == pygame.K_q:
+                    pygame.quit()
+                    sys.exit()
+                elif event_run.key == pygame.K_r:
+                    main_menu()
+
+
+main_menu()
+
