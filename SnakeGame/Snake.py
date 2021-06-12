@@ -2,7 +2,6 @@ import random
 import pygame
 
 
-
 class Snake():
     def __init__(self, color):
         self.snake_head = [100, 50]  # позиция головы змеи
