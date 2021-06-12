@@ -10,12 +10,13 @@ game = Game()
 
 
 def start():
+    # <Саша
     super = SuperFood(game.colours["Green"], game.width, game.height)
+    # Саша/>
     game.total_score = 0
     game.is_over = False
     snake = Snake(game.random_color())
     food = Food(game.random_color(), game.width, game.height)
-
     game.draw_bg()
     while True:
         while game.paused:
@@ -51,6 +52,7 @@ def start():
         game.screen_refresh()
         if game.is_over:
             break
+
 
 # <Саша
 def main_menu():
