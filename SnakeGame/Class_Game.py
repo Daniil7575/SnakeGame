@@ -80,8 +80,5 @@ class Game:
         while True:
             for end_event in pygame.event.get():
                 if end_event.type == pygame.KEYDOWN:
-                    screen_surf = pygame.display.get_surface()
-                    screen_surf.fill(self.colours["Black"])  # erases the entire screen surface
-                    # screen_surf.blit(screen_surf, (0, 0))
                     return
 
