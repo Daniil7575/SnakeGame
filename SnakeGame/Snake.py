@@ -2,7 +2,6 @@ import random
 import pygame
 
 
-
 class Snake():
     def __init__(self, color):
         self.snake_head = [100, 50]  # позиция головы змеи
@@ -50,3 +49,12 @@ class Snake():
         for block in self.snake_body[1:]:
             if block[0] == self.snake_head[0] and block[1] == self.snake_head[1]:
                 game_over()
+
+    def super_snake_mech(self, score, super_position, screen_width, screen_height):
+        self.snake_body.insert(0, list(self.snake_head))
+        if self.snake_head[0] == super_position[0] and self.snake_head[1] == super_position[1]:
+            super_position = [random.randrange(1, screen_width / 10) * 10, random.randrange(1, screen_height / 10) * 10]
+            score += 2
+        else:
+            self.snake_body.pop()
+        return score, super_position

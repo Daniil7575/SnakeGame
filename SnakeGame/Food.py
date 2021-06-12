@@ -1,7 +1,7 @@
 from Snake import *
 
 
-class Food():
+class Food:
     def __init__(self, food_color, screen_width, screen_height):
         self.food_color = food_color
         self.size_x = 10
